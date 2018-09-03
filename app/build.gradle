@@ -9,11 +9,34 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        flavorDimensions "versionCode"
+    }
+    productFlavors {
+        flaovers_default {
+
+        }
+
+        qihoo {
+            applicationId "com.coolweather.android.qihoo"
+        }
+
+        baidu {
+            applicationId "com.coolweather.android.baidu"
+        }
+    }
+    signingConfigs {
+        config {
+            storeFile file(KEY_PATH)
+            storePassword KEY_PASS
+            keyAlias ALIAS_NAME
+            keyPassword ALIAS_PASS
+        }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 }
@@ -25,8 +48,8 @@ repositories {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:28.0.0-rc01'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'com.android.support:appcompat-v7:28.0.0-rc02'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'org.litepal.android:core:2.0.0'                         //数据库
     implementation 'com.squareup.okhttp3:okhttp:3.11.0'                     //网络请求
     implementation 'com.google.code.gson:gson:2.8.5'                        //json数据解析
